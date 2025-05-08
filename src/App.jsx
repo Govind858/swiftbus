@@ -16,7 +16,7 @@ import LoginPage from './Page/LoginPage'
 import SearchPage from './Page/SearchPage'
 import BusOperatorLoginPage from './Page/BusOperatorLoginPage'
 import ViewTripsPage from './Page/ViewTripsPage'
-import ViewTicketsPage from './Page/viewTicketsPage'
+import ViewTicketsPage from './Page/ViewTicketsPage'
 import BusOperatorBookingHistory from './Page/BusOperatorBookingHistory'
 import TestLoginPage from './Page/TestLoginPage'
 import MyTicketCompomponentPage from "./Page/AuthenticationPage"
