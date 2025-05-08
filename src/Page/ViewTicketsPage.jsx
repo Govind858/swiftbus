@@ -5,7 +5,7 @@ import BusTicket from '../Components/BusTicket'
 import Header from '../Components/UserComponents/Header'
 import MyTicketComponent from '../Components/MyTicketComponent'
 
-function viewTicketsPage() {
+function ViewTicketsPage() {
   return (
     <div>
         <Header/>
@@ -14,4 +14,4 @@ function viewTicketsPage() {
   )
 }
 
-export default viewTicketsPage
+export default ViewTicketsPage
