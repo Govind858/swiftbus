@@ -19,7 +19,6 @@ import ViewTripsPage from './Page/ViewTripsPage'
 import ViewTicketsPage from './Page/ViewTicketsPage'
 import BusOperatorBookingHistory from './Page/BusOperatorBookingHistory'
 import TestLoginPage from './Page/TestLoginPage'
-import MyTicketCompomponentPage from "./Page/AuthenticationPage"
 import MyTicketPage from './Page/MyTicketPage'
 
 

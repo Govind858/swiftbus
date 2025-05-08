@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import './BusTicketHomeScreen.css'; // Import the CSS file
-import { Link } from "react-router-dom";
 
 const BusTicketHomeScreen = () => {
   const [currentQuote, setCurrentQuote] = useState('');
   const [quoteAuthor, setQuoteAuthor] = useState('');
+  const navigate = useNavigate(); // Add this line to initialize useNavigate
 
   // Array of travel-related quotes
   const quotes = [
@@ -52,10 +53,13 @@ const BusTicketHomeScreen = () => {
         <p className="quote-author">- {quoteAuthor}</p>
       </div>
 
-      {/* Get Started Button */}
-      <Link to="/user/login" className="get-started-btn">
-      Get Started <ArrowRight className="btn-icon" />
-    </Link>
+      {/* Get Started Button - Changed from Link to button with navigate */}
+      <button 
+        className="get-started-btn"
+        onClick={() => navigate('/user/login')}
+      >
+        Get Started <ArrowRight className="btn-icon" />
+      </button>
     </div>
   );
 };

@@ -79,6 +79,7 @@
     align-items: center;
     gap: 0.5rem;
     transition: all 0.3s ease;
+    cursor: pointer;
   }
   
   .get-started-btn:hover {
