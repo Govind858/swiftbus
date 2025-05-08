@@ -1,5 +1,5 @@
 import React from 'react'
-import RevenueComponent from '../BusDriver/Components/revenueComponent'
+import RevenueComponent from '../BusDriver/Components/RevenueComponent'
 
 function RevenuePage() {
   return (
