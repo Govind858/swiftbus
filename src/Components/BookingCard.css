@@ -1,0 +1,220 @@
+/* BookingCard.css */
+/* Add these improvements to your BookingCard.css */
+.booking-card-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5); /* Darker overlay for better contrast */
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease; /* Add smooth fade-in animation */
+}
+
+.booking-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Stronger shadow for more depth */
+  padding: 24px;
+  max-width: 400px;
+  width: 90%; /* Make responsive on small screens */
+  margin: 0 auto;
+  animation: slideUp 0.3s ease; /* Add slide up animation */
+  max-height: 90vh; /* Ensure it doesn't go off screen */
+  overflow-y: auto; /* Add scrolling for smaller screens */
+}
+
+/* Add animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+} 
+  
+  .card-header {
+    margin-bottom: 16px;
+  }
+  
+  .title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .yellow-line {
+    height: 4px;
+    width: 64px;
+    background-color: #f59e0b;
+    margin-top: 4px;
+  }
+  
+  .bus-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  
+  .bus-icon {
+    padding: 8px;
+    background-color: #fef3c7;
+    border-radius: 50%;
+    margin-right: 12px;
+    color: #d97706;
+  }
+  
+  .bus-name {
+    font-weight: 500;
+    color: #4b5563;
+  }
+  
+  .location-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  
+  .location {
+    display: flex;
+    align-items: center;
+  }
+  
+  .location svg {
+    color: #f59e0b;
+    margin-right: 4px;
+  }
+  
+  .location span {
+    font-weight: 500;
+  }
+  
+  .time {
+    font-size: 0.875rem;
+    color: #6b7280;
+  }
+  
+  .divider {
+    width: 100%;
+    border-top: 1px dashed #d1d5db;
+    margin: 8px 0;
+  }
+  
+  .date-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  
+  .date-info svg {
+    color: #f59e0b;
+    margin-right: 8px;
+  }
+  
+  .passenger-section {
+    background-color: #f9fafb;
+    padding: 16px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+  }
+  
+  .passenger-counter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+  
+  .counter-buttons {
+    display: flex;
+    align-items: center;
+  }
+  
+  .counter-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: #fef3c7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #b45309;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .counter-btn:hover {
+    background-color: #fde68a;
+  }
+  
+  .passenger-count {
+    margin: 0 12px;
+    font-weight: 500;
+  }
+  
+  .fare-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .fare {
+    font-weight: 500;
+  }
+  
+  .total-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    padding: 12px;
+    background-color: #fefce8;
+    border-radius: 8px;
+  }
+  
+  .total-section span {
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .pay-now-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #f59e0b;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .pay-now-btn:hover {
+    background-color: #d97706;
+  }
+  
+  .cancel-btn {
+    width: 100%;
+    margin-top: 8px;
+    padding: 8px;
+    border: 1px solid #d1d5db;
+    background-color: transparent;
+    color: #4b5563;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .cancel-btn:hover {
+    background-color: #f3f4f6;
+  }

@@ -1,0 +1,111 @@
+/* Header.css */
+
+.header {
+    width: 100%;
+    background-color: #ffffff;
+    padding: 16px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 999;
+  }
+  
+  .user-logo {
+    font-size: 1.90rem;
+    font-weight: bold;
+    color: #ffe70c;
+  }
+
+  .user-logo a {
+    text-decoration: none;
+    color: inherit; /* Optional: keeps it the same color as .logo */
+  }
+  
+  
+  .highlight {
+    color:#000000
+  }
+  
+  .button-group {
+    display: flex;
+    gap: 16px;
+  }
+  
+  .nav-button {
+    background-color: #f9fafb;
+    color: #333;
+    padding: 8px 16px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background-color 0.2s, color 0.2s;
+    font-size: larger;
+    outline: none;
+  }
+
+  .my-ticket {
+    background-color: #eae3e3b8;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: black;
+    text-decoration: none;
+    padding: 8px 12px;
+    font-size: 16px;
+  }
+  
+  .ticket-icon {
+    font-size: 20px;
+    display: flex;
+  }
+
+.account-btn{
+  background-color: #eae3e3b8;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: black;
+  text-decoration: none;
+  padding: 8px 12px;
+  font-size: 16px;
+  outline: none;
+  border:none;
+}
+
+.account-icon{
+  font-size: 20px;
+  display: flex;
+}
+
+  
+  .nav-button:hover {
+    background-color:;
+    color: white;
+    border-color:var(--color-primary);
+  }
+  
+  /* Mobile Responsive */
+  @media (max-width: 768px) {
+    .header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .button-group {
+      margin-top: 12px;
+      flex-direction: column;
+      width: 100%;
+    }
+  
+    .nav-button {
+      width: 100%;
+      text-align: center;
+    }
+  }
+  

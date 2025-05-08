@@ -1,0 +1,139 @@
+/* TripCard.css */
+
+.trip-card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  
+  .trip-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+  
+  .trip-card-header {
+    background-color: #f3f4f6;
+    padding: 12px 16px;
+    border-bottom: 1px solid #e5e7eb;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .trip-card-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0;
+  }
+  
+  .trip-card-stops {
+    font-size: 14px;
+    color: #6b7280;
+    background-color: #e5e7eb;
+    padding: 2px 8px;
+    border-radius: 12px;
+  }
+  
+  .trip-card-content {
+    padding: 16px;
+  }
+  
+  .trip-card-route {
+    margin-bottom: 16px;
+  }
+  
+  .trip-endpoint {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 8px;
+  }
+  
+  .location-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-top: 4px;
+    margin-right: 12px;
+  }
+  
+  .start-dot {
+    background-color: #10b981;
+  }
+  
+  .end-dot {
+    background-color: #ef4444;
+  }
+  
+  .location-name {
+    font-weight: 500;
+    margin-bottom: 2px;
+  }
+  
+  .location-time {
+    font-size: 14px;
+    color: #6b7280;
+  }
+  
+  .trip-stops-summary {
+    display: flex;
+    align-items: center;
+    margin-left: 6px;
+    margin-bottom: 8px;
+    position: relative;
+  }
+  
+  .stops-line {
+    position: absolute;
+    left: 0;
+    top: -8px;
+    bottom: -8px;
+    width: 2px;
+    background-color: #d1d5db;
+  }
+  
+  .stops-count {
+    margin-left: 16px;
+    font-size: 13px;
+    color: #6b7280;
+    background-color: #f3f4f6;
+    padding: 2px 8px;
+    border-radius: 12px;
+  }
+  
+  .trip-stops-preview {
+    border-top: 1px solid #e5e7eb;
+    padding-top: 12px;
+  }
+  
+  .stops-preview-title {
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0 0 8px 0;
+  }
+  
+  .stops-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .stop-preview-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 8px;
+    background-color: #f9fafb;
+    border-radius: 4px;
+  }
+  
+  .stop-location {
+    font-weight: 500;
+    font-size: 14px;
+  }
+  
+  .stop-time {
+    font-size: 14px;
+    color: #6b7280;
+  }
