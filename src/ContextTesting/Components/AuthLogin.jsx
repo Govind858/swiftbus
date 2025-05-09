@@ -1,8 +1,8 @@
 // src/components/BusOperatorLogin.jsx
 import { useState } from "react";
-import axios from "axios";
 import { useAuth } from "./AuthContext";
 import "./AuthLogin.css";
+import BusOperatorAxios from "../../Axios/BusOperatorAxios"
 
 const AuthLogin = () => {
   const [form, setForm] = useState({ email: "", password: "" });
@@ -15,7 +15,7 @@ const AuthLogin = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:3000/bus-operator/login", form);
+      const res = await BusOperatorAxios.post("/bus-operator/login", form);
       if (res.data.success) {
         console.log("Server result:", res.data.result);
         loginUser(res.data.result);
