@@ -1,0 +1,76 @@
+.bus-finder-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    flex-direction: column;
+}
+
+.bus-finder{
+        border-radius: 5px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 30px;
+        padding: 20px;
+        width: 90%;
+        justify-content: space-around;
+        background-color: rgb(255, 255, 255);
+    }
+
+.from-div{
+    
+    width: 300px;
+    
+} 
+
+#from{
+    border-radius: 5px;
+    width: 300px;
+    height: 35px;
+    padding-left: 10px;
+    font-size: medium; 
+   
+
+
+}
+#to{
+    border-radius: 5px;
+    width: 300px;
+    height: 35px;
+    padding-left: 10px;
+    font-size: medium; 
+}
+
+
+#date{
+    border-radius: 5px;
+    width: 300px;
+    height: 35px;
+    padding-left: 5px;
+}
+
+.search-btn{
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    display: flex;
+    gap: 3px;
+    justify-content: center;
+    align-items: center;
+    width: 250px;
+    height: 35px;
+    font-size: medium;
+    transition: transform 0.3 ease;
+}
+
+#swap-btn{
+    width: 35px;
+    height: 35px;
+    border-radius: 50%  ;
+}
+
+.search-btn:hover{
+    transform: translateY(-3px);
+}

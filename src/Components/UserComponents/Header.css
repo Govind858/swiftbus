@@ -1,111 +1,154 @@
-/* Header.css */
+/* Header.css - Optimized with modern UI/UX */
+:root {
+  --primary: rgb(17, 17, 17);
+  --primary-light:rgb(243, 243, 183);
+  --secondary: #3f37c9;
+  --accent: #f72585;
+  --light: #f8f9fa;
+  --dark: #212529;
+  --gray: #6c757d;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.12);
+  --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+  --shadow-lg: 0 10px 25px rgba(0,0,0,0.1);
+  --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+body, html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
+/* Base Header Styles */
 .header {
-    width: 100%;
-    background-color: #ffffff;
-    padding: 16px 32px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    position: sticky;
-    top: 0;
-    z-index: 999;
-  }
-  
-  .user-logo {
-    font-size: 1.90rem;
-    font-weight: bold;
-    color: #ffe70c;
-  }
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow-md);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
 
-  .user-logo a {
-    text-decoration: none;
-    color: inherit; /* Optional: keeps it the same color as .logo */
-  }
-  
-  
-  .highlight {
-    color:#000000
-  }
-  
-  .button-group {
-    display: flex;
-    gap: 16px;
-  }
-  
-  .nav-button {
-    background-color: #f9fafb;
-    color: #333;
-    padding: 8px 16px;
-    border: 1px solid #e5e7eb;
-    border-radius: 8px;
-    font-weight: 500;
-    text-decoration: none;
-    transition: background-color 0.2s, color 0.2s;
-    font-size: larger;
-    outline: none;
-  }
-
-  .my-ticket {
-    background-color: #eae3e3b8;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    color: black;
-    text-decoration: none;
-    padding: 8px 12px;
-    font-size: 16px;
-  }
-  
-  .ticket-icon {
-    font-size: 20px;
-    display: flex;
-  }
-
-.account-btn{
-  background-color: #eae3e3b8;
-  border-radius: 8px;
+.header-container {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 6px;
-  color: black;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0.75rem 1.5rem;
+}
+
+/* Logo Styles */
+.logo-link {
   text-decoration: none;
-  padding: 8px 12px;
-  font-size: 16px;
-  outline: none;
-  border:none;
+  transition: var(--transition);
 }
 
-.account-icon{
-  font-size: 20px;
+.bus-logo {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: yellow;
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+}
+
+.logo-highlight {
+  color: var(--dark);
+  font-weight: 800;
+}
+
+/* Navigation Styles */
+.nav-container {
   display: flex;
+  gap: 1rem;
+  align-items: center;
+  position: relative;
 }
 
-  
-  .nav-button:hover {
-    background-color:;
-    color: white;
-    border-color:var(--color-primary);
+.nav-link, .account-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: var(--transition);
+  text-decoration: none;
+}
+
+.nav-link {
+  color: var(--gray);
+  background: transparent;
+}
+
+.nav-link:hover, .account-btn:hover {
+  background-color: rgba(58, 134, 255, 0.1);
+  color: rgb(255, 255, 187);
+}
+
+.nav-link.active {
+  background-color: rgba(58, 134, 255, 0.2);
+  color: rgb(251, 251, 194);
+}
+
+.account-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--gray);
+}
+
+.account-btn.active {
+  background-color: var(--primary);
+  color: white;
+}
+
+.nav-icon {
+  font-size: 1.25rem;
+}
+
+/* Account Card Styles */
+.account-card-container {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 0.5rem;
+  animation: fadeIn 0.2s ease-out;
+  z-index: 1001;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
   }
-  
-  /* Mobile Responsive */
-  @media (max-width: 768px) {
-    .header {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-  
-    .button-group {
-      margin-top: 12px;
-      flex-direction: column;
-      width: 100%;
-    }
-  
-    .nav-button {
-      width: 100%;
-      text-align: center;
-    }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .header-container {
+    padding: 0.75rem 1rem;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+
+  .nav-container {
+    justify-content: space-between;
+  }
+
+  .nav-link, .account-btn {
+    padding: 0.75rem;
+    font-size: 0.9rem;
+  }
+
+  .account-card-container {
+    right: 0.5rem;
+  }
+}

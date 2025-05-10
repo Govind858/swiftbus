@@ -6,12 +6,8 @@ import Header from '../Components/UserComponents/Header'
 function UserHome() {
   return (
     <>
-          <Header/>
-            <div style={{ height: '100vh' }}>
-                <SearchComponent style={{height:'50vh'}} />
-                {/* <RecentTrips  style={{height:'50vh'}}/> */}
-           </div>
-            <Footer/>
+        <Header/>
+        <SearchComponent/>
     </>
   )
 }

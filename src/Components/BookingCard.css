@@ -218,3 +218,15 @@
   .cancel-btn:hover {
     background-color: #f3f4f6;
   }
+
+  .close-btn-div{
+    display: flex;
+    justify-content: end;
+  }
+
+  #close-btn{
+    font-size: large;
+    border: none;
+    background-color: white;
+  }
+

@@ -4,6 +4,7 @@
 }
 
 .bus-card {
+    width: 800px;
     margin-top: 11px;
     display: flex;
     flex-direction: row;

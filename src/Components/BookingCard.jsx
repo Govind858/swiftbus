@@ -4,6 +4,8 @@ import { Plus, Minus, CalendarDays, MapPin, Bus } from 'lucide-react';
 import './BookingCard.css'; // Create this file for your custom styles
 import { TbReceiptYuan } from 'react-icons/tb';
 import UserAxios from '../Axios/UserAxios';
+import { IoMdClose } from "react-icons/io";
+
 function BookingCard({ bus, date, onPayNow, onCancel }) {
   const [passengers, setPassengers] = useState(1);
   const [message,setmessage] = useState()
@@ -39,10 +41,12 @@ function BookingCard({ bus, date, onPayNow, onCancel }) {
   return (
    <div className="booking-card-container">
      <div className="booking-card">
-      <div className="card-header">
-        <h2 className="title">Booking Summary</h2>
-        <div className="yellow-line"></div>
+      <div className='close-btn-div'>
+        <button id='close-btn' onClick={onCancel}>
+          <IoMdClose />
+        </button>
       </div>
+      
       
       <div className="bus-info">
         <div className="bus-icon">
@@ -109,9 +113,7 @@ function BookingCard({ bus, date, onPayNow, onCancel }) {
         Pay Now
       </button>
       
-      <button className="cancel-btn" onClick={onCancel}>
-        Cancel
-      </button>
+   
     </div>
    </div>
   );

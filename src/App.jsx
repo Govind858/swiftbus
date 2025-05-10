@@ -20,18 +20,22 @@ import ViewTicketsPage from './Page/ViewTicketsPage'
 import BusOperatorBookingHistory from './Page/BusOperatorBookingHistory'
 import TestLoginPage from './Page/TestLoginPage'
 import MyTicketPage from './Page/MyTicketPage'
+import NewUserHome from './Page/NewUserHome';
+import FirstPage from './Page/FirstPage';
 
 
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<BusTicketHomeScreen />} />
+      <Route path="/" element={<FirstPage />} />
       <Route path="/user/userHome" element={<UserHome />} />
       <Route path="/user/history" element={<ViewTicketsPage />} />
       <Route path="/user/login" element={<LoginPage />} />
       <Route path="/user/search" element={<SearchPage />} />
       <Route path="/user/authentication" element={<AuthenticationPage />} />
       <Route path='/user/my-ticket' element={<MyTicketPage/>}/>
+      <Route path='/user/new-home' element={<NewUserHome/>}/>
+
 
       <Route path="/bus-operator/home" element={<DriverHome />} />
       <Route path="/bus-operator/bus-registration" element={<BusRegistration />} />
