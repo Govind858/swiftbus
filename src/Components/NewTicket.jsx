@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import BusOperatorAxios from "../Axios/BusOperatorAxios";
 import { MdTrendingFlat, MdLocationOn, MdAccessTime, MdAttachMoney, MdDirectionsBus } from "react-icons/md";
 import './NewTicket.css'; // Create a separate CSS file for this component
+import qrCode  from '../assets/qr-code.png'
 
 const NewTicket = () => {
   const [tickets, setTickets] = useState([]);
@@ -99,6 +100,9 @@ const NewTicket = () => {
                       </div>
                     </div>
                   </div>
+                    <div>
+                        <img id='qr-img' src={qrCode} alt="" />
+                    </div>
                 </div>
 
                 <div className="new-ticket-footer">

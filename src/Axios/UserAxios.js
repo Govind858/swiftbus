@@ -2,9 +2,8 @@
 import axios from "axios";
 
 const userAxios = axios.create({
-  baseURL: "https://swiftbus-backend.onrender.com",
-   
-
+  // baseURL: "https://swiftbus-backend.onrender.com",
+    baseURL:"http://localhost:3000",
 
   headers: {
     "Content-Type": "application/json",

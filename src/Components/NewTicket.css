@@ -5,6 +5,7 @@
 
 /* Main container styles */
 .new-ticket-container {
+  margin-top:64px;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -348,6 +349,13 @@
 .new-no-tickets p {
   color: #718096;
   margin: 0;
+}
+
+#qr-img{
+  width: 100px;
+  height: 100px;
+  object-fit:cover ;
+  border: solid 1px;
 }
 
 /* Responsive adjustments */

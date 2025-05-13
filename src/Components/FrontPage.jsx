@@ -7,7 +7,7 @@ const FrontPage = () => {
   const navigate = useNavigate();
 
   const handleGetStartedClick = () => {
-    navigate('/user/userHome');
+    navigate('/user/login');
   };
 
   return (

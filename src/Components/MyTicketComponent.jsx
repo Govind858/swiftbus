@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react';
 import UserAxios from '../Axios/UserAxios';
 import { MdTrendingFlat, MdLocationOn, MdAccessTime, MdAttachMoney, MdDirectionsBus } from "react-icons/md";
 import './MyTicketComponent.css';
+import qrCode  from '../assets/qr-code.png'
 
 // Make sure to install react-icons: npm install react-icons
 
-const MyTicketComponent = () => {
+const   MyTicketComponent = () => {
   const [tickets, setTickets] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -50,9 +51,9 @@ const MyTicketComponent = () => {
   }
 
   return (
-      <div className="new-ticket-container">
+      <div className="user-ticket-container">
           <div className="new-ticket-page-container">
-            <h2 className="new-ticket-page-title">Booking Details</h2>
+            <h2 className="new-ticket-page-title">Booking Details of user</h2>
             
             {tickets.length > 0 ? (
               <div className="new-ticket-list">
@@ -102,6 +103,9 @@ const MyTicketComponent = () => {
                             <p className="new-time">{ticket.toStop.time}</p>
                           </div>
                         </div>
+                      </div>
+                      <div>
+                        <img id='qr-img' src={qrCode} alt="" />
                       </div>
                     </div>
     

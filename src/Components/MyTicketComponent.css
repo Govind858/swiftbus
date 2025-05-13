@@ -277,6 +277,13 @@
   animation: spin 1s linear infinite;
 }
 
+#qr-img{
+  width: 100px;
+  height: 100px;
+  object-fit:cover ;
+  border: solid 1px;
+}
+
 @keyframes spin {
   to {
     transform: rotate(360deg);

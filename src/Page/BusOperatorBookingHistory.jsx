@@ -1,12 +1,13 @@
 import React from 'react'
 import DriverNavbar from '../BusDriver/Components/DriverNavBar'
-import BookingHistory from '../BusDriver/Components/BookingHistory'
+import NewTicket from '../Components/NewTicket'
+
 
 function BusOperatorBookingHistory() {
   return (
     <div>
         <DriverNavbar/>
-        <BookingHistory/>
+        <NewTicket/>
     </div>
   )
 }
