@@ -1,112 +1,129 @@
-import { useState } from 'react';
-import { User, Mail, Phone, Lock, ArrowRight } from 'lucide-react';
-import './BusSignupForm.css';
-import { busSignup } from '../../Api/DriverApi';
+import React, { useState } from 'react';
+import { User, Mail, Phone, Lock, Eye, EyeOff } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { busSignup } from '../../Api/DriverApi';
+import './BusSignupForm.css';
 
-export default function BusSignupForm() {
+const BusSignupForm = () => {
   const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     mobile: '',
-    password: '',
+    password: ''
   });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prevData => ({
-      ...prevData,
+    setFormData({
+      ...formData,
       [name]: value
-    }));
+    });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit =  async (e)  => {
     e.preventDefault();
-    // Form submission logic would go here
-    const response = await busSignup(formData)
-    console.log(response)
-    if(response && response.success){
-      navigate('/driverHome')
-    }
-   
+     const response = await busSignup(formData)
+        console.log(response)
+        if(response && response.success){
+          navigate('/bus-operator/home')
+        }
+       
+    console.log('Form submitted:', formData);
+  };
 
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
   };
 
   return (
     <div className="signup-container">
-      <div className="signup-card">
-        <div className="signup-header">
-          <h2 className="app-name">SwiftBus</h2>
-          <p className="subtitle">Create your account</p>
-        </div>
+      <div className="signup-form-wrapper">
+        <h1 className="app-title">SwiftBus</h1>
+        <h2 className="form-title">create an account</h2>
         
-        <form onSubmit={handleSubmit} className="signup-form">
-          <div className="input-group">
-            <div className="input-icon">
-              <User size={18} />
+        <div className="signup-form">
+          <div className="form-group">
+            <label htmlFor="name">Full Name</label>
+            <div className="input-group">
+              <User size={18} className="input-icon" />
+              <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Enter your full name"
+                value={formData.name}
+                onChange={handleChange}
+              />
             </div>
-            <input
-              type="text"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              placeholder="Full Name"
-              required
-            />
           </div>
           
-          <div className="input-group">
-            <div className="input-icon">
-              <Mail size={18} />
+          <div className="form-group">
+            <label htmlFor="email">Email Address</label>
+            <div className="input-group">
+              <Mail size={18} className="input-icon" />
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Enter your email"
+                value={formData.email}
+                onChange={handleChange}
+              />
             </div>
-            <input
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              placeholder="Email Address"
-              required
-            />
           </div>
           
-          <div className="input-group">
-            <div className="input-icon">
-              <Phone size={18} />
+          <div className="form-group">
+            <label htmlFor="mobile">Mobile Number</label>
+            <div className="input-group">
+              <Phone size={18} className="input-icon" />
+              <input
+                type="tel"
+                id="mobile"
+                name="mobile"
+                placeholder="Enter your mobile number"
+                value={formData.mobile}
+                onChange={handleChange}
+              />
             </div>
-            <input
-              type="tel"
-              name="mobile"
-              value={formData.mobile}
-              onChange={handleChange}
-              placeholder="Mobile Number"
-              required
-            />
           </div>
           
-          <div className="input-group">
-            <div className="input-icon">
-              <Lock size={18} />
+          <div className="form-group">
+            <label htmlFor="password">Password</label>
+            <div className="input-group">
+              <Lock size={18} className="input-icon" />
+              <input
+                type={showPassword ? "text" : "password"}
+                id="password"
+                name="password"
+                placeholder="Create a password"
+                value={formData.password}
+                onChange={handleChange}
+              />
+              <div 
+                className="password-toggle" 
+                onClick={togglePasswordVisibility}
+              >
+                {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+              </div>
             </div>
-            <input
-              type="password"
-              name="password"
-              value={formData.password}
-              onChange={handleChange}
-              placeholder="Password"
-              required
-            />
           </div>
           
-          <button type="submit" className="signup-button">
-            Sign Up <ArrowRight size={18} />
+          <button 
+            className="signup-button"
+            onClick={handleSubmit}
+          >
+            Create Account
           </button>
-        </form>
-        
-        <div className="signin-link">
-          Already have an account? <a href="#">Sign in</a>
         </div>
+        
+        <p className="signin-link">
+          Already have an account? <a href="#">Sign In</a>
+        </p>
       </div>
     </div>
   );
-}
+};
+
+export default BusSignupForm;

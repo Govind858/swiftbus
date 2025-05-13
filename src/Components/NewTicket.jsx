@@ -106,6 +106,9 @@ const NewTicket = () => {
                     <MdAttachMoney className="new-fare-icon" />
                     <p className="new-fare-amount">₹{ticket.fare}</p>
                   </div>
+                  <div>
+                    <p>{new Date(ticket.updatedAt).toLocaleString()}</p>
+                  </div>
                   <div className="new-ticket-distance">
                     <p>{ticket.distance} km</p>
                   </div>

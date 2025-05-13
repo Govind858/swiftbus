@@ -1,0 +1,19 @@
+.signup-container{
+    display: flex;
+    flex-direction: row;
+    
+}
+
+.signup-container{
+    padding: 10px;
+    border-radius: 5px;
+    width: 50%;
+}
+
+.img-container{
+    width: 50%;
+}
+
+.main-container{
+    background-color: blue;
+}

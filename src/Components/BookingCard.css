@@ -1,5 +1,20 @@
-/* BookingCard.css */
-/* Add these improvements to your BookingCard.css */
+/* BookingCard.css - Updated with consistent color scheme */
+
+:root {
+  --primary: #1565C0;
+  --primary-light: #3B82F6;
+  --secondary: #0D47A1;
+  --accent: #f72585;
+  --light: #f8f9fa;
+  --dark: #212529;
+  --gray: #6c757d;
+  --success: #198754;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.12);
+  --shadow-md: 0 4px 6px rgba(0,0,0,0.15);
+  --shadow-lg: 0 10px 25px rgba(0,0,0,0.1);
+  --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 .booking-card-container {
   position: fixed;
   top: 0;
@@ -7,226 +22,241 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.5); /* Darker overlay for better contrast */
+  background-color: rgba(0, 0, 0, 0.5);
   width: 100%;
   height: 100%;
   z-index: 1000;
-  animation: fadeIn 0.3s ease; /* Add smooth fade-in animation */
+  animation: fadeIn 0.3s ease;
 }
 
 .booking-card {
   position: relative;
   display: flex;
   flex-direction: column;
-  background-color: white;
+  background-color: var(--light);
   border-radius: 8px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Stronger shadow for more depth */
+  box-shadow: var(--shadow-lg);
   padding: 24px;
   max-width: 400px;
-  width: 90%; /* Make responsive on small screens */
+  width: 90%;
   margin: 0 auto;
-  animation: slideUp 0.3s ease; /* Add slide up animation */
-  max-height: 90vh; /* Ensure it doesn't go off screen */
-  overflow-y: auto; /* Add scrolling for smaller screens */
+  animation: slideUp 0.3s ease;
+  max-height: 90vh;
+  overflow-y: auto;
 }
 
-/* Add animations */
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
 }
 
 @keyframes slideUp {
-  from { transform: translateY(30px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
-} 
-  
-  .card-header {
-    margin-bottom: 16px;
+  from {
+    transform: translateY(30px);
+    opacity: 0;
   }
-  
-  .title {
-    font-size: 1.25rem;
-    font-weight: bold;
-    color: #333;
+  to {
+    transform: translateY(0);
+    opacity: 1;
   }
-  
-  .yellow-line {
-    height: 4px;
-    width: 64px;
-    background-color: #f59e0b;
-    margin-top: 4px;
-  }
-  
-  .bus-info {
-    display: flex;
-    align-items: center;
-    margin-bottom: 16px;
-  }
-  
-  .bus-icon {
-    padding: 8px;
-    background-color: #fef3c7;
-    border-radius: 50%;
-    margin-right: 12px;
-    color: #d97706;
-  }
-  
-  .bus-name {
-    font-weight: 500;
-    color: #4b5563;
-  }
-  
-  .location-info {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 16px;
-  }
-  
-  .location {
-    display: flex;
-    align-items: center;
-  }
-  
-  .location svg {
-    color: #f59e0b;
-    margin-right: 4px;
-  }
-  
-  .location span {
-    font-weight: 500;
-  }
-  
-  .time {
-    font-size: 0.875rem;
-    color: #6b7280;
-  }
-  
-  .divider {
-    width: 100%;
-    border-top: 1px dashed #d1d5db;
-    margin: 8px 0;
-  }
-  
-  .date-info {
-    display: flex;
-    align-items: center;
-    margin-bottom: 16px;
-  }
-  
-  .date-info svg {
-    color: #f59e0b;
-    margin-right: 8px;
-  }
-  
-  .passenger-section {
-    background-color: #f9fafb;
-    padding: 16px;
-    border-radius: 8px;
-    margin-bottom: 16px;
-  }
-  
-  .passenger-counter {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 8px;
-  }
-  
-  .counter-buttons {
-    display: flex;
-    align-items: center;
-  }
-  
-  .counter-btn {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    background-color: #fef3c7;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #b45309;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .counter-btn:hover {
-    background-color: #fde68a;
-  }
-  
-  .passenger-count {
-    margin: 0 12px;
-    font-weight: 500;
-  }
-  
-  .fare-info {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .fare {
-    font-weight: 500;
-  }
-  
-  .total-section {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 24px;
-    padding: 12px;
-    background-color: #fefce8;
-    border-radius: 8px;
-  }
-  
-  .total-section span {
-    font-weight: bold;
-    color: #333;
-  }
-  
-  .pay-now-btn {
-    width: 100%;
-    padding: 12px;
-    background-color: #f59e0b;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background-color 0.2s;
-  }
-  
-  .pay-now-btn:hover {
-    background-color: #d97706;
-  }
-  
-  .cancel-btn {
-    width: 100%;
-    margin-top: 8px;
-    padding: 8px;
-    border: 1px solid #d1d5db;
-    background-color: transparent;
-    color: #4b5563;
-    border-radius: 8px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background-color 0.2s;
-  }
-  
-  .cancel-btn:hover {
-    background-color: #f3f4f6;
-  }
+}
 
-  .close-btn-div{
-    display: flex;
-    justify-content: end;
-  }
+.card-header {
+  margin-bottom: 16px;
+}
 
-  #close-btn{
-    font-size: large;
-    border: none;
-    background-color: white;
-  }
+.title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: var(--secondary);
+}
 
+.yellow-line {
+  height: 4px;
+  width: 64px;
+  background-color: var(--primary);
+  margin-top: 4px;
+}
+
+.bus-info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.bus-icon {
+  padding: 8px;
+  background-color: var(--primary-light);
+  border-radius: 50%;
+  margin-right: 12px;
+  color: var(--light);
+}
+
+.bus-name {
+  font-weight: 500;
+  color: var(--dark);
+}
+
+.location-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.location {
+  display: flex;
+  align-items: center;
+}
+
+.location svg {
+  color: var(--primary);
+  margin-right: 4px;
+}
+
+.location span {
+  font-weight: 500;
+  color: var(--dark);
+}
+
+.time {
+  font-size: 0.875rem;
+  color: var(--gray);
+}
+
+.divider {
+  width: 100%;
+  border-top: 1px dashed rgba(0, 0, 0, 0.1);
+  margin: 8px 0;
+}
+
+.date-info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.date-info svg {
+  color: var(--primary);
+  margin-right: 8px;
+}
+
+.passenger-section {
+  background-color: rgba(0, 0, 0, 0.03);
+  padding: 16px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.passenger-counter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.counter-buttons {
+  display: flex;
+  align-items: center;
+}
+
+.counter-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--light);
+  border: none;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.counter-btn:hover {
+  background-color: var(--primary-light);
+}
+
+.passenger-count {
+  margin: 0 12px;
+  font-weight: 500;
+  color: var(--dark);
+}
+
+.fare-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.fare {
+  font-weight: 500;
+  color: var(--dark);
+}
+
+.total-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  padding: 12px;
+  background-color: rgba(25, 135, 84, 0.1); /* success color with opacity */
+  border-radius: 8px;
+}
+
+.total-section span {
+  font-weight: bold;
+  color: var(--dark);
+}
+
+.pay-now-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: var(--primary);
+  color: var(--light);
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.pay-now-btn:hover {
+  background-color: var(--primary-light);
+}
+
+.cancel-btn {
+  width: 100%;
+  margin-top: 8px;
+  padding: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: transparent;
+  color: var(--dark);
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.cancel-btn:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.close-btn-div {
+  display: flex;
+  justify-content: flex-end;
+}
+
+#close-btn {
+  font-size: large;
+  border: none;
+  background-color: transparent;
+  color: var(--dark);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+#close-btn:hover {
+  color: var(--primary);
+}

@@ -22,7 +22,8 @@ import TestLoginPage from './Page/TestLoginPage'
 import MyTicketPage from './Page/MyTicketPage'
 import NewUserHome from './Page/NewUserHome';
 import FirstPage from './Page/FirstPage';
-
+import NewFrontPage from './Components/NewFrontPage';
+import Signup from './Components/Signup';
 
 function App() {
   return (
@@ -35,10 +36,15 @@ function App() {
       <Route path="/user/authentication" element={<AuthenticationPage />} />
       <Route path='/user/my-ticket' element={<MyTicketPage/>}/>
       <Route path='/user/new-home' element={<NewUserHome/>}/>
+      <Route path='/user/new-front' element={<NewFrontPage/>}/>
+      <Route path='/user/signup' element={<Signup/>}/>
+
+      
+
 
 
       <Route path="/bus-operator/home" element={<DriverHome />} />
-      <Route path="/bus-operator/bus-registration" element={<BusRegistration />} />
+      <Route path="/bus-operator/signup" element={<BusRegistration />} />
       <Route path="/bus-operator/trips" element={<TripsPage />} />
       <Route path="/bus-operator/bookings" element={<BookingHistoryPage />} />
       <Route path="/bus-operator/dashboard" element={<DriverDashboardPage />} />

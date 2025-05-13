@@ -1,114 +1,129 @@
 import React, { useState } from 'react';
-import "./Signup.css"
-import {userRegister} from "../Api/UserApi"
+import { User, Mail, Phone, Lock, Eye, EyeOff } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-const SignUpPage = () => {
+import { userRegister } from '../Api/UserApi';
+import './Signup.css';
+
+const Signup = () => {
   const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    mobile:'',
-    password: '',
-    confirmPassword:''
+    mobile: '',
+    password: ''
   });
 
-  const [message,setMessage] = useState()
-
   const handleChange = (e) => {
+    const { name, value } = e.target;
     setFormData({
       ...formData,
-      [e.target.name]:e.target.value
+      [name]: value
     });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit =  async (e)  => {
     e.preventDefault();
-    
-  
-    if (formData.password !== formData.confirmPassword) {
-       setMessage("the password is not match")
-      return;
-    }
+     const response = await userRegister(formData)
+        console.log(response)
+        if(response && response.success){
+          navigate('/user/userHome')
+        }
+       
+    console.log('Form submitted:', formData);
+  };
 
-    const sendData ={
-      name:formData.name,
-      email:formData.email,
-      mobile:formData.mobile,
-      password:formData.password
-    }
-   const response =  await userRegister(sendData)
-
-   if (response && response.success) {
-    navigate('/user/userHome')
-  } else {
-    setMessage("Registration failed")
-  }
-
-    
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
   };
 
   return (
-    <div className="container">
-      <div className="card">
-        <h2 className="title">SwiftBus</h2>
-        <p className="subtitle">Create an account</p>
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <input 
-            type="text"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            placeholder="Full Name"
-            className="input"
-            required
-          />
-          <input 
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            placeholder="Email"
-            className="input"
-            required
-          />
-          <input 
-            type="mobile"
-            name="mobile"
-            value={formData.mobile}
-            onChange={handleChange}
-            placeholder="Mobile"
-            className="input"
-            required
-          />
-          <input 
-            type="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-            placeholder="Password"
-            className="input"
-            required
-          />
-          <input 
-            type="password"
-            name="confirmPassword"
-            value={formData.confirmPassword}
-            onChange={handleChange}
-            placeholder="Confirm Password"
-            className="input"
-            required
-          />
-          {message && <p>{message}</p>}
-          <p className="login-text">
-            Already have an account? Login
-          </p>
-          <button type="submit" className="btn">
-              Sign Up
-            </button>
-        </form>
+    <div className="signup-container">
+      <div className="signup-form-wrapper">
+        <h1 className="app-title">SwiftBus</h1>
+        <h2 className="form-title">create an account</h2>
+        
+        <div className="signup-form">
+          <div className="form-group">
+            <label htmlFor="name">Full Name</label>
+            <div className="input-group">
+              <User size={18} className="input-icon" />
+              <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Enter your full name"
+                value={formData.name}
+                onChange={handleChange}
+              />
+            </div>
+          </div>
+          
+          <div className="form-group">
+            <label htmlFor="email">Email Address</label>
+            <div className="input-group">
+              <Mail size={18} className="input-icon" />
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Enter your email"
+                value={formData.email}
+                onChange={handleChange}
+              />
+            </div>
+          </div>
+          
+          <div className="form-group">
+            <label htmlFor="mobile">Mobile Number</label>
+            <div className="input-group">
+              <Phone size={18} className="input-icon" />
+              <input
+                type="tel"
+                id="mobile"
+                name="mobile"
+                placeholder="Enter your mobile number"
+                value={formData.mobile}
+                onChange={handleChange}
+              />
+            </div>
+          </div>
+          
+          <div className="form-group">
+            <label htmlFor="password">Password</label>
+            <div className="input-group">
+              <Lock size={18} className="input-icon" />
+              <input
+                type={showPassword ? "text" : "password"}
+                id="password"
+                name="password"
+                placeholder="Create a password"
+                value={formData.password}
+                onChange={handleChange}
+              />
+              <div 
+                className="password-toggle" 
+                onClick={togglePasswordVisibility}
+              >
+                {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+              </div>
+            </div>
+          </div>
+          
+          <button 
+            className="signup-button"
+            onClick={handleSubmit}
+          >
+            Create Account
+          </button>
+        </div>
+        
+        <p className="signin-link">
+          Already have an account? <a href="#">Sign In</a>
+        </p>
       </div>
     </div>
   );
 };
 
-export default SignUpPage;
+export default Signup;

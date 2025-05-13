@@ -197,6 +197,7 @@
 /* Ticket footer section */
 .ticket-footer {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
   padding: 1rem 1.5rem;

@@ -186,15 +186,15 @@ const DriverNavbar = () => {
           </div>
           
           {/* Profile */}
-          <div className="nav-action-item profile-container" ref={profileRef}>
+          <div className="nav-action-item" ref={profileRef}>
             <button 
               className="action-button profile-button" 
               aria-label="Profile" 
               onClick={toggleProfile}
               aria-expanded={isProfileOpen}
             >
-              <div className="avatar">
-                <LuUser size={20} />
+              <div className="profile-avatar">
+                <LuUser size={18} />
               </div>
             </button>
             {isProfileOpen && <ProfileDropdown />}

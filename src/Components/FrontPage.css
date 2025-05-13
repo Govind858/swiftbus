@@ -1,0 +1,118 @@
+/* FrontPage.css - Split design with vertical halves */
+
+.split-container {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+}
+
+.left-half {
+  flex: 1;
+  background-color: #2563eb; /* Cool, refreshing blue */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 5%;
+}
+
+.right-half {
+  flex: 1;
+  overflow: hidden;
+}
+
+.brand-content {
+  max-width: 500px;
+  color: white;
+}
+
+.brand-name {
+  font-size: 4rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  letter-spacing: -0.5px;
+}
+
+.brand-tagline {
+  font-size: 1.5rem;
+  margin-bottom: 48px;
+  opacity: 0.9;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+}
+
+.get-started-button {
+  padding: 16px 40px;
+  background-color: white;
+  color: #2563eb; /* Same blue as background */
+  border: none;
+  border-radius: 8px;
+  font-size: 1.25rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.get-started-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.get-started-button:active {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Media queries for responsive design */
+@media (max-width: 992px) {
+  .split-container {
+    flex-direction: column;
+    height: auto;
+  }
+  
+  .left-half {
+    padding: 60px 5%;
+  }
+  
+  .right-half {
+    height: 50vh;
+  }
+  
+  .brand-name {
+    font-size: 3rem;
+  }
+  
+  .brand-tagline {
+    font-size: 1.25rem;
+    margin-bottom: 36px;
+  }
+}
+
+@media (max-width: 576px) {
+  .left-half {
+    padding: 40px 5%;
+  }
+  
+  .brand-name {
+    font-size: 2.5rem;
+  }
+  
+  .brand-tagline {
+    font-size: 1.1rem;
+    margin-bottom: 28px;
+  }
+  
+  .get-started-button {
+    padding: 14px 32px;
+    font-size: 1.1rem;
+  }
+}   

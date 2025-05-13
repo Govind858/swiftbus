@@ -62,10 +62,7 @@
 }
 
 .logo-text {
-  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+ color: #4285F4;
 }
 
 /* Navigation Action Items */
@@ -85,6 +82,7 @@
   cursor: pointer;
   color: var(--text-color);
   transition: all var(--transition-speed);
+  padding: 0;
 }
 
 .action-button:hover {
@@ -141,8 +139,16 @@
   outline-offset: 2px;
 }
 
-/* Profile */
-.avatar {
+/* Profile Avatar Styles */
+.profile-button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+}
+
+.profile-avatar {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -152,11 +158,17 @@
   background-color: var(--bg-light);
   color: var(--text-color);
   transition: all var(--transition-speed);
+  aspect-ratio: 1/1;
 }
 
-.profile-button:hover .avatar {
+.profile-button:hover .profile-avatar {
   background-color: var(--primary-color);
   color: var(--text-white);
+  transform: scale(1.05);
+}
+
+.profile-button:active .profile-avatar {
+  transform: scale(0.95);
 }
 
 /* Notification Badge */

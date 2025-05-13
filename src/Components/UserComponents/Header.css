@@ -1,8 +1,8 @@
 /* Header.css - Optimized with modern UI/UX */
 :root {
-  --primary: rgb(17, 17, 17);
-  --primary-light:rgb(243, 243, 183);
-  --secondary: #3f37c9;
+  --primary: #1565C0;         /* Rich blue - more professional */
+  --primary-light: #3B82F6;   /* Lighter blue for hover states */
+  --secondary: #0D47A1;       /* Darker blue for depth */
   --accent: #f72585;
   --light: #f8f9fa;
   --dark: #212529;
@@ -48,7 +48,7 @@ body, html {
 .bus-logo {
   font-size: 1.75rem;
   font-weight: 700;
-  color: yellow;
+  color: var(--primary);
   margin: 0;
   font-family: 'Inter', sans-serif;
 }
@@ -84,13 +84,13 @@ body, html {
 }
 
 .nav-link:hover, .account-btn:hover {
-  background-color: rgba(58, 134, 255, 0.1);
-  color: rgb(255, 255, 187);
+  background-color: rgba(21, 101, 192, 0.1);
+  color: var(--primary);
 }
 
 .nav-link.active {
-  background-color: rgba(58, 134, 255, 0.2);
-  color: rgb(251, 251, 194);
+  background-color: rgba(21, 101, 192, 0.2);
+  color: var(--primary);
 }
 
 .account-btn {
@@ -151,4 +151,4 @@ body, html {
   .account-card-container {
     right: 0.5rem;
   }
-}
+}   
