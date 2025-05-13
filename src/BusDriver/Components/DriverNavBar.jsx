@@ -6,7 +6,7 @@ import { IoQrCodeSharp, IoClose, IoMenu, IoNotifications } from "react-icons/io5
 import { LuUser } from "react-icons/lu";
 import ProfileDropdown from './ProfileDropdown';
 import BusOperatorAxios from "../../Axios/BusOperatorAxios";
-import "./drivernavbar.css"
+import "./driver-navbar.css"
 
 const DriverNavbar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
