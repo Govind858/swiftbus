@@ -111,7 +111,7 @@ const   MyTicketComponent = () => {
     
                     <div className="new-ticket-footer">
                       <div className="new-ticket-fare">
-                        <MdAttachMoney className="new-fare-icon" />
+                        <div className="new-fare-icon" />
                         <p className="new-fare-amount">₹{ticket.fare}</p>
                       </div>
                       <div>

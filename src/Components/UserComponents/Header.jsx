@@ -7,6 +7,7 @@ import './Header.css';
 
 const Header = () => {
   const [showCard, setShowCard] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
   const cardRef = useRef(null);
   const location = useLocation();
 
@@ -14,7 +15,15 @@ const Header = () => {
     setShowCard(prev => !prev);
   };
 
-  // Close card when clicking outside or navigating
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (cardRef.current && !cardRef.current.contains(event.target)) {
@@ -26,7 +35,6 @@ const Header = () => {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  // Close card on route change
   useEffect(() => {
     setShowCard(false);
   }, [location.pathname]);
@@ -44,19 +52,20 @@ const Header = () => {
           <Link 
             to="/user/history" 
             className={`nav-link ${location.pathname.includes('history') ? 'active' : ''}`}
+            aria-label={isMobile ? "Tickets" : "My Tickets"}
           >
             <LuTicket className="nav-icon" />
-            <span>My Tickets</span>
+            {!isMobile && <span>My Tickets</span>}
           </Link>
 
           <button 
             onClick={handleCard}
             className={`account-btn ${showCard ? 'active' : ''}`}
             aria-expanded={showCard}
-            aria-label="Account menu"
+            aria-label={isMobile ? "Account" : "Account menu"}
           >
             <AiOutlineUser className="nav-icon" />
-            <span>Account</span>
+            {!isMobile && <span>Account</span>}
           </button>
 
           {showCard && (

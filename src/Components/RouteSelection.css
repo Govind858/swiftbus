@@ -253,11 +253,14 @@
   background: var(--dark);
 }
 
-.swap-btn-container{
+/* Swap button styles */
+.swap-btn-container {
   display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.swap-btn{
+.swap-btn {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -267,6 +270,7 @@
   height: 40px;
   border-radius: 50%;
   transition: var(--transition);
+  cursor: pointer;
 }
 
 .swap-btn:hover {
@@ -274,23 +278,85 @@
   box-shadow: var(--shadow-sm);
 }
 
-.swap-icon{
+.swap-icon {
   font-size: 28px;
   color: white;
 }
 
-/* Responsive Design */
-@media (max-width: 968px) {
+/* Enhanced Responsive Design */
+@media (max-width: 1100px) {
+  .route-search-inputs {
+    flex-wrap: wrap;
+  }
+  
+  .route-input-group {
+    min-width: 45%;
+  }
+  
+  .swap-btn-container {
+    order: 3;
+  }
+  
+  .search-routes-btn {
+    margin-top: 10px;
+    width: 100%;
+    order: 5;
+  }
+}
+
+@media (max-width: 768px) {
+  .route-search-container {
+    padding: 1rem;
+  }
+  
+  .route-search-card {
+    padding: 1rem;
+  }
+  
   .route-search-inputs {
     flex-direction: column;
     gap: 1rem;
   }
-
-  .swap-cities-btn {
-    display: none;
-  }
-
-  .search-routes-btn {
+  
+  .route-input-group {
     width: 100%;
+  }
+  
+  .swap-btn-container {
+    width: 100%;
+    margin: 0.5rem 0;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .swap-btn {
+    transform: rotate(90deg);
+  }
+  
+  .bus-card {
+    min-width: 250px;
+  }
+}
+
+@media (max-width: 480px) {
+  .route-search-container {
+    padding: 0.5rem;
+  }
+  
+  .bus-results-scroll {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .bus-card {
+    min-width: 100%;
+  }
+  
+  .bus-header h4 {
+    font-size: 14px;
+  }
+  
+  .bus-type {
+    font-size: 10px;
   }
 }
