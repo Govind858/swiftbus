@@ -2,14 +2,15 @@ import React, { useEffect, useState } from 'react';
 import UserAxios from '../Axios/UserAxios';
 import { MdTrendingFlat, MdLocationOn, MdAccessTime, MdAttachMoney, MdDirectionsBus } from "react-icons/md";
 import './MyTicketComponent.css';
-import qrCode  from '../assets/qr-code.png'
+import qrCode from '../assets/qr-code.png';
+import QrCodeComponent from './QrCodeComponent';
 
-// Make sure to install react-icons: npm install react-icons
-
-const   MyTicketComponent = () => {
+const MyTicketComponent = () => {
   const [tickets, setTickets] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [displayQrCode, setDisplayQrCode] = useState(false);
+  const [selectedTicket, setSelectedTicket] = useState(null);
 
   useEffect(() => {
     const fetchTickets = async () => {
@@ -29,6 +30,15 @@ const   MyTicketComponent = () => {
     fetchTickets();
   }, []);
 
+  const handleTicketClick = (ticket) => {
+    setSelectedTicket(ticket);
+    setDisplayQrCode(true);
+  };
+
+  const closeQrCode = () => {
+    setDisplayQrCode(false);
+  };
+
   if (loading) {
     return (
       <div className="ticket-loading">
@@ -37,7 +47,6 @@ const   MyTicketComponent = () => {
       </div>
     );
   }
-   console.log('tickets:',tickets)
 
   if (error) {
     return (
@@ -51,90 +60,92 @@ const   MyTicketComponent = () => {
   }
 
   return (
-      <div className="user-ticket-container">
-          <div className="new-ticket-page-container">
-            <h2 className="new-ticket-page-title">Booking Details of user</h2>
-            
-            {tickets.length > 0 ? (
-              <div className="new-ticket-list">
-                {tickets.map((ticket, index) => (
-                  <div key={index} className="new-ticket-card">
-                    <div className="new-ticket-header">
-                      <div className="new-bus-info">
-                        <MdDirectionsBus className="new-bus-icon" />
-                        <h3 className="new-bus-name">{ticket.busName}</h3>
-                        
-                      </div>
-                      <div className="new-ticket-badge">
-                        <span>Booking</span>
-                      </div>
-                    </div>
-    
-                    <div className="new-ticket-route">
-                      <div className="new-location new-from-location">
-                        <div className="new-location-dot new-from-dot"></div>
-                        <div className="new-location-details">
-                          <div className="new-location-icon-label">
-                            <MdLocationOn className="new-location-icon" />
-                            <p className="new-location-label">From</p>
-                          </div>
-                          <p className="new-stop-name">{ticket.fromStop.stop}</p>
-                          <div className="new-time-container">
-                            <MdAccessTime className="new-time-icon" />
-                            <p className="new-time">{ticket.fromStop.time}</p>
-                          </div>
-                        </div>
-                      </div>
-    
-                      <div className="new-route-line">
-                        <MdTrendingFlat className="new-route-arrow" />
-                      </div>
-    
-                      <div className="new-location new-to-location">
-                        <div className="new-location-dot new-to-dot"></div>
-                        <div className="new-location-details">
-                          <div className="new-location-icon-label">
-                            <MdLocationOn className="new-location-icon" />
-                            <p className="new-location-label">To</p>
-                          </div>
-                          <p className="new-stop-name">{ticket.toStop.stop}</p>
-                          <div className="new-time-container">
-                            <MdAccessTime className="new-time-icon" />
-                            <p className="new-time">{ticket.toStop.time}</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div>
-                        <img id='qr-img' src={qrCode} alt="" />
-                      </div>
-                    </div>
-    
-                    <div className="new-ticket-footer">
-                      <div className="new-ticket-fare">
-                        <div className="new-fare-icon" />
-                        <p className="new-fare-amount">₹{ticket.fare}</p>
-                      </div>
-                      <div>
-                        <p>{new Date(ticket.updatedAt).toLocaleString()}</p>
+    <div className="user-ticket-container">
+      <div className="new-ticket-page-container">
+        <h2 className="new-ticket-page-title">Booking Details of user</h2>
+        
+        {tickets.length > 0 ? (
+          <div className="new-ticket-list">
+            {tickets.map((ticket, index) => (
+              <div key={index} className="new-ticket-card" onClick={() => handleTicketClick(ticket)}>
+                <div className="new-ticket-header">
+                  <div className="new-bus-info">
+                    <MdDirectionsBus className="new-bus-icon" />
+                    <h3 className="new-bus-name">{ticket.busName}</h3>
+                  </div>
+                  <div className="new-ticket-badge">
+                    <span>Booking</span>
+                  </div>
+                </div>
 
+                <div className="new-ticket-route">
+                  <div className="new-location new-from-location">
+                    <div className="new-location-dot new-from-dot"></div>
+                    <div className="new-location-details">
+                      <div className="new-location-icon-label">
+                        <MdLocationOn className="new-location-icon" />
+                        <p className="new-location-label">From</p>
                       </div>
-                      <div className="new-ticket-distance">
-                       <p>{ticket.distance.toFixed(2)} km</p>
-                     
+                      <p className="new-stop-name">{ticket.fromStop.stop}</p>
+                      <div className="new-time-container">
+                        <MdAccessTime className="new-time-icon" />
+                        <p className="new-time">{ticket.fromStop.time}</p>
                       </div>
                     </div>
                   </div>
-                ))}
+
+                  <div className="new-route-line">
+                    <MdTrendingFlat className="new-route-arrow" />
+                  </div>
+
+                  <div className="new-location new-to-location">
+                    <div className="new-location-dot new-to-dot"></div>
+                    <div className="new-location-details">
+                      <div className="new-location-icon-label">
+                        <MdLocationOn className="new-location-icon" />
+                        <p className="new-location-label">To</p>
+                      </div>
+                      <p className="new-stop-name">{ticket.toStop.stop}</p>
+                      <div className="new-time-container">
+                        <MdAccessTime className="new-time-icon" />
+                        <p className="new-time">{ticket.toStop.time}</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="ticket-qr-preview">
+                    <img id='qr-img' src={qrCode} alt="QR Code" />
+                  </div>
+                </div>
+
+                <div className="new-ticket-footer">
+                  <div className="new-ticket-fare">
+                    <MdAttachMoney className="new-fare-icon" />
+                    <p className="new-fare-amount">₹{ticket.fare}</p>
+                  </div>
+                  <div className="new-ticket-date">
+                    <p>{new Date(ticket.updatedAt).toLocaleString()}</p>
+                  </div>
+                  <div className="new-ticket-distance">
+                    <p>{ticket.distance.toFixed(2)} km</p>
+                  </div>
+                </div>
               </div>
-            ) : (
-              <div className="new-no-tickets">
-                <div className="new-no-tickets-icon">🎫</div>
-                <h3>No bookings found</h3>
-                <p>Booking details will appear here</p>
-              </div>
-            )}
+            ))}
           </div>
-        </div>
+        ) : (
+          <div className="new-no-tickets">
+            <div className="new-no-tickets-icon">🎫</div>
+            <h3>No bookings found</h3>
+            <p>Booking details will appear here</p>
+          </div>
+        )}
+      </div>
+      
+      <QrCodeComponent 
+        isOpen={displayQrCode} 
+        onClose={closeQrCode} 
+      />
+    </div>
   );
 };
 
