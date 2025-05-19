@@ -1,0 +1,21 @@
+.LiveTripContainer{
+    display: flex;
+    height: 100%;
+}
+
+.form-container{
+    height: 50%;
+    background-color: blue;
+    padding: 10px;
+}
+
+.to-container{
+    height: 50%;
+    background-color: red;
+    padding: 10px;
+
+}
+
+.bus-name-live-map{
+    text-align: center;
+}
