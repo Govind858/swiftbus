@@ -24,6 +24,7 @@ import NewUserHome from './Page/NewUserHome';
 import FirstPage from './Page/FirstPage';
 import NewFrontPage from './Components/NewFrontPage';
 import Signup from './Components/Signup';
+import MapComponent from './Components/MapComponent'
 
 function App() {
   return (
@@ -38,6 +39,9 @@ function App() {
       <Route path='/user/new-home' element={<NewUserHome/>}/>
       <Route path='/user/new-front' element={<NewFrontPage/>}/>
       <Route path='/user/signup' element={<Signup/>}/>
+      <Route path='/user/map' element={<MapComponent/>}/>
+
+      
 
       
 

@@ -166,3 +166,16 @@
     aspect-ratio: 1/1;
   }
 }
+
+/* Live Map icon styling */
+.map-pin-icon {
+  font-size: 1.4rem;
+  display: inline-block;
+  margin-right: 4px;
+}
+
+/* Optional: active nav link styling */
+.nav-link.active {
+  color: #007bff;
+  font-weight: bold;
+}

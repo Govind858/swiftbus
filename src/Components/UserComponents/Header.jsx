@@ -58,6 +58,16 @@ const Header = () => {
             {!isMobile && <span>My Tickets</span>}
           </Link>
 
+          {/* ✅ Live Map Button */}
+          <Link 
+            to="/user/map" 
+            className={`nav-link ${location.pathname.includes('live-map') ? 'active' : ''}`}
+            aria-label={isMobile ? "Map" : "Live Map"}
+          >
+            <span className="nav-icon map-pin-icon"></span>
+            {!isMobile && <span>Live Map</span>}
+          </Link>
+
           <button 
             onClick={handleCard}
             className={`account-btn ${showCard ? 'active' : ''}`}
