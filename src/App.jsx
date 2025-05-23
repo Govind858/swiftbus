@@ -24,7 +24,6 @@ import NewUserHome from './Page/NewUserHome';
 import FirstPage from './Page/FirstPage';
 import NewFrontPage from './Components/NewFrontPage';
 import Signup from './Components/Signup';
-import LiveMapTrip from './Components/lIveMapTrip';
 import MapPage from './Page/MapPage';
 
 function App() {
@@ -41,7 +40,6 @@ function App() {
       <Route path='/user/new-front' element={<NewFrontPage/>}/>
       <Route path='/user/signup' element={<Signup/>}/>
       <Route path='/user/map' element={<MapPage/>}/>
-      <Route path='/user/live-map-form' element={<LiveMapTrip/>}/>
 
 
 
