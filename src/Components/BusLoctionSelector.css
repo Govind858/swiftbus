@@ -1,0 +1,178 @@
+/* BusLoctionSelector.css */
+:root {
+  --primary: #1565C0;
+  --primary-light: #3B82F6;
+  --secondary: #0D47A1;
+  --accent: #f72585;
+  --light: #f8f9fa;
+  --dark: #212529;
+  --gray: #6c757d;
+  --success: #198754;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.12);
+  --shadow-md: 0 4px 6px rgba(0,0,0,0.15);
+  --shadow-lg: 0 10px 25px rgba(0,0,0,0.1);
+  --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Base Container Styles */
+.bus-selector-container {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: var(--shadow-md);
+  max-width: 1000px;
+  margin: 20px auto;
+  padding: 2rem;
+}
+
+/* Bus Name Header */
+.bus-name {
+  color: var(--primary);
+  font-size: 1.75rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.bus-date {
+  color: var(--gray);
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+}
+
+/* Location Selection Areas */
+.location-section {
+  margin-bottom: 1.5rem;
+}
+
+.location-title {
+  color: var(--dark);
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.stop-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.stop-option {
+  background-color: var(--light);
+  border-radius: 6px;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+  min-width: 150px;
+}
+
+.stop-option:hover {
+  background-color: var(--primary-light);
+  color: white;
+}
+
+.from-option.selected {
+  background-color: var(--primary);
+  color: white;
+}
+
+.to-option.selected {
+  background-color: var(--accent);
+  color: white;
+}
+
+.time-info {
+  font-size: 0.8rem;
+  color: var(--gray);
+  margin-top: 3px;
+}
+
+.from-option.selected .time-info,
+.to-option.selected .time-info {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.selection-feedback {
+  color: var(--success);
+  font-weight: 500;
+  margin-top: 0.75rem;
+}
+
+.prompt-text {
+  color: var(--gray);
+  padding: 1rem;
+  text-align: center;
+}
+
+/* Journey Summary */
+.journey-summary {
+  background-color: var(--light);
+  border: 1px solid var(--primary-light);
+  border-radius: 6px;
+  padding: 1rem;
+  margin-top: 1.5rem;
+}
+
+.summary-title {
+  color: var(--secondary);
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.summary-detail {
+  color: var(--dark);
+  margin-bottom: 0.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.summary-value {
+  font-weight: 500;
+}
+
+.time-detail {
+  color: var(--gray);
+  font-size: 0.9rem;
+}
+
+.fare-info, .journey-date {
+  margin-top: 0.75rem;
+  color: var(--dark);
+}
+
+.book-now-btn-container{
+  display: flex;
+  justify-content: center;
+}
+
+.book-now-btn{
+  border: none;
+  border-radius: 5px;
+  width: 250px;
+  height: 30px;
+  color: white;
+  background-color: var(--primary);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .bus-selector-container {
+    padding: 1rem;
+  }
+  
+  .stop-options {
+    flex-direction: column;
+  }
+  
+  .stop-option {
+    width: 100%;
+  }
+}
+

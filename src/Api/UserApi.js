@@ -36,7 +36,7 @@ export const getOneTrip = async(id)=>{
     }
  }
 
- export const calculateFare = (km) => {
+ export const  calculateFare = (km) => {
     const minFare = 10
     const minkm =2.5
     if(km <= minkm){

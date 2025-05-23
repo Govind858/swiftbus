@@ -1,26 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 import L from 'leaflet';
-import userAxios from "../Axios/UserAxios"
+import userAxios from "../Axios/UserAxios";
+import BusLocationSelector from './BusLocationSelector';
 
-// Create custom bus icon with better URL and error handling
-const busIcon = L.icon({
-  iconUrl: 'https://cdn-icons-png.flaticon.com/512/1801/1801439.png',
-  iconSize: [40, 40], // size of the icon
-  iconAnchor: [20, 20], // point of the icon which will correspond to marker's location
-  popupAnchor: [0, -20], // point from which the popup should open relative to the iconAnchor
-  className: 'bus-icon' // custom class for styling
-});
-
-// Alternative bus icon URLs to try if the first one fails
-const busIconAlt = L.icon({
-  iconUrl: 'https://cdn-icons-png.flaticon.com/512/741/741407.png',
-  iconSize: [40, 40],
-  iconAnchor: [20, 20],
-  popupAnchor: [0, -20],
-  className: 'bus-icon-alt'
-});
-
-// Create a colored bus icon using data URI (always works)
+// Create custom bus icon with SVG (always works)
 const busIconSVG = L.icon({
   iconUrl: 'data:image/svg+xml;base64,' + btoa(`
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="35" height="35">
@@ -52,6 +35,8 @@ L.Icon.Default.mergeOptions({
 const LeafletMap = ({ center = [9.9312, 76.2673], zoom = 13, markers = [] }) => {
   const mapRef = useRef(null);
   const mapInstanceRef = useRef(null);
+  const [tripData, setTripData] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   // Function to create popup content with button
   const createPopupContent = (marker) => {
@@ -87,20 +72,31 @@ const LeafletMap = ({ center = [9.9312, 76.2673], zoom = 13, markers = [] }) => 
     button.addEventListener('click', async () => {
       button.textContent = 'Loading...';
       button.disabled = true;
+      setIsLoading(true);
       
       try {
         const response = await userAxios.get(`/user/fetch-trip/${marker.id}`);
         
-        // Just console log the response - no display logic
+        // Store the trip data
         console.log('Trip data fetched for bus ID:', marker.id);
         console.log('Response data:', response.data);
+        const trip = response.data.trip;
+        setTripData(trip); // Set the trip data to be passed to BusLocationSelector
         
-        button.textContent = 'Trip Details Fetched';
+        button.textContent = 'Trip Details Loaded';
         button.style.backgroundColor = '#28a745';
+        
+        // Scroll to the bus selector component
+        const busSelector = document.getElementById('bus-location-selector');
+        if (busSelector) {
+          busSelector.scrollIntoView({ behavior: 'smooth' });
+        }
       } catch (error) {
         console.error('Error fetching trip data:', error);
         button.textContent = 'View Trip Details';
         button.disabled = false;
+      } finally {
+        setIsLoading(false);
       }
     });
 
@@ -165,14 +161,14 @@ const LeafletMap = ({ center = [9.9312, 76.2673], zoom = 13, markers = [] }) => 
   }, [markers]);
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '20px' }}>
       <link 
         rel="stylesheet" 
         href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css"
         integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
         crossOrigin=""
       />
-      <div style={{ position: 'relative' }}>
+      <div style={{ position: 'relative', marginBottom: '30px' }}>
         <div 
           ref={mapRef} 
           style={{ 
@@ -183,6 +179,26 @@ const LeafletMap = ({ center = [9.9312, 76.2673], zoom = 13, markers = [] }) => 
             boxShadow: '0 4px 8px rgba(0,0,0,0.1)'
           }}
         />
+        {isLoading && (
+          <div style={{
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            backgroundColor: 'rgba(0,0,0,0.7)',
+            color: 'white',
+            padding: '10px 20px',
+            borderRadius: '5px',
+            zIndex: 1000
+          }}>
+            Loading trip data...
+          </div>
+        )}
+      </div>
+      
+      {/* Bus Location Selector with trip data passed as prop */}
+      <div id="bus-location-selector">
+        <BusLocationSelector tripData={tripData} />
       </div>
     </div>
   );
@@ -197,10 +213,10 @@ const App = () => {
   // Bus stops and routes for booking app with MongoDB IDs
   const mapMarkers = [
     {   
-      id: '6819a472ed615e77ea6503ff', // MongoDB ID
+      id: '681f2c115e92b6debf40f7c1', // MongoDB ID
       lat: 9.9816, 
       lng: 76.2999, 
-      popupContent: '<b>Bus: Fort Queen Express</b><br>🚌 Route: Fort Kochi ➡️ Aluva<br>📍 Departure: 8:00 AM',
+      popupContent: '<b>Jacquline</b><br>🚌 Route: Kottayam ➡️ Ettumanoor<br>📍 Departure: 8:00 AM',
     },
     {
       id: '6819a474ed615e77ea650403', // MongoDB ID
@@ -241,7 +257,7 @@ const App = () => {
   ];
 
   return (
-    <div style={{ backgroundColor: '#f0f0f0', minHeight: '100vh' }}>
+    <div style={{ backgroundColor: 'f8f9fa', minHeight: '100vh' }}>
       <LeafletMap 
         center={mapCenter} 
         zoom={mapZoom} 
